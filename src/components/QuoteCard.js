@@ -1,11 +1,12 @@
 import React from 'react';
 
-const QuoteCard = (props) =>
+const QuoteCard = ({quote, removeQuote, upvoteQuote, downvoteQuote }) =>
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
         <blockquote className="card-blockquote">
-          {/* <p>{Render Quote Content}</p> */}
+          {console.log('quoteCard.js', quote)}
+          <p>{quote.content}</p>
           {/* <footer>- author <cite title="Source Title">{Render Quote Author}</cite></footer> */}
         </blockquote>
       </div>
@@ -13,12 +14,14 @@ const QuoteCard = (props) =>
         <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
           <button
             type="button"
+            onClick={() => upvoteQuote(quote.id)}
             className="btn btn-primary"
           >
             Upvote
           </button>
           <button
             type="button"
+            onClick={() => downvoteQuote(quote.id)}
             className="btn btn-secondary"
           >
             Downvote
@@ -26,6 +29,7 @@ const QuoteCard = (props) =>
           <button
             type="button"
             className="btn btn-danger"
+            onClick={() => removeQuote(quote.id)}
           >
             <span aria-hidden="true">&times;</span>
           </button>
